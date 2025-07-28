@@ -1,0 +1,74 @@
+import React from 'react';
+
+function Projects() {
+  const projects = [
+    {
+      title: 'VermaBytes - Learning Platform',
+      techStack: 'React + Custom CSS',
+      description: 'Created VermaBytes, a modern learning platform offering structured courses and engaging content. Utilized React.js and CSS to build a scalable, responsive interface with component-based architecture, dynamic routing, and smooth user interactions, emphasizing performance and accessibility.',
+      image: 'https://via.placeholder.com/400x220/00bcd4/FFFFFF?text=VermaBytes', // Replace with your actual project image
+      liveLink: '#', // Replace with actual live link
+      githubLink: '#', // Replace with actual GitHub link
+    },
+    {
+      title: 'Expense Tracker',
+      techStack: 'MERN Stack',
+      description: 'The Expense Tracker Project is a Web Application Developed Using React Js, Node Js, Express Js, MongoDB. Its Main Purpose is to Assist Users in Keeping Track of Their Expenses. This project involves creating a user interface that enables users to add, edit, and delete expenses.',
+      image: 'https://via.placeholder.com/400x220/00bcd4/FFFFFF?text=Expense+Tracker', // Replace with your actual project image
+      liveLink: '#', // Replace with actual live link
+      githubLink: '#', // Replace with actual GitHub link
+    },
+    // Add more projects here
+  ];
+
+  return (
+    <div className="container">
+      <h2 className="section-title fade-in delay-100">My Projects</h2>
+      <div className="projects-grid">
+        {projects.map((project, index) => (
+          <div
+            key={index}
+            className={`project-card slide-in-up delay-${200 + index * 100}`}
+          >
+            <img
+              src={project.image}
+              alt={project.title}
+              className="project-image"
+            />
+            <div className="project-content">
+              <h3>
+                {project.title}
+              </h3>
+              <p className="project-tech-stack">
+                {project.techStack}
+              </p>
+              <p className="project-description">
+                {project.description}
+              </p>
+              <div className="project-buttons">
+                <a
+                  href={project.liveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                >
+                  View Live
+                </a>
+                <a
+                  href={project.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary"
+                >
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default Projects;
