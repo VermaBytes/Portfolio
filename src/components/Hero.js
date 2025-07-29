@@ -1,52 +1,47 @@
 import React, { useState, useEffect } from 'react';
 
-function Hero() {
-  // Phrases to cycle through in the typing animation
-  const professions = [
-    "Full Stack Developer",
-    "Frontend Enthusiast",
-    "MERN Stack Specialist",
-    "Problem Solver",
-    "Web Innovator"
-  ];
+// Move the professions array outside the component to prevent it from being recreated on every render.
+const professions = [
+  "Full Stack Developer",
+  "Frontend Enthusiast",
+  "MERN Stack Specialist",
+  "Problem Solver",
+  "Web Innovator"
+];
 
+function Hero() {
   const [currentProfessionIndex, setCurrentProfessionIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  const [typingSpeed, setTypingSpeed] = useState(100); // Initial typing speed
+  const [typingSpeed, setTypingSpeed] = useState(100);
 
   useEffect(() => {
     let timer;
     const handleTyping = () => {
       const fullText = professions[currentProfessionIndex];
 
-      // Determine whether to add or remove characters
       setCurrentText(
         isDeleting
           ? fullText.substring(0, currentText.length - 1)
           : fullText.substring(0, currentText.length + 1)
       );
 
-      // Adjust typing speed
-      setTypingSpeed(isDeleting ? 50 : 100); // Faster deleting, normal typing
+      setTypingSpeed(isDeleting ? 50 : 100);
 
       if (!isDeleting && currentText === fullText) {
-        // If finished typing a word, pause briefly, then start deleting
-        setTypingSpeed(1500); // Pause at end of word
+        setTypingSpeed(1500);
         setIsDeleting(true);
       } else if (isDeleting && currentText === "") {
-        // If finished deleting, move to the next word
         setIsDeleting(false);
         setCurrentProfessionIndex((prevIndex) => (prevIndex + 1) % professions.length);
-        setTypingSpeed(100); // Reset typing speed for new word
+        setTypingSpeed(100);
       }
     };
 
     timer = setTimeout(handleTyping, typingSpeed);
 
-    // Cleanup timer on component unmount or re-render
     return () => clearTimeout(timer);
-  }, [currentText, isDeleting, currentProfessionIndex, typingSpeed, professions]); // Dependencies
+  }, [currentText, isDeleting, currentProfessionIndex, typingSpeed]); // 'professions' is no longer in dependencies as it's outside.
 
   return (
     <div className="hero-content">
@@ -55,7 +50,7 @@ function Hero() {
       </h1>
       <p className="hero-subtitle slide-in-up delay-300">
         {currentText}
-        <span className="typing-cursor">|</span> {/* Blinking cursor */}
+        <span className="typing-cursor">|</span>
       </p>
       <div className="hero-buttons">
         <a
