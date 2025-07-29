@@ -31,7 +31,6 @@ body {
     background-color: var(--color-background-dark);
     color: var(--color-text-primary);
     line-height: 1.6;
-    scroll-behavior: smooth;
     overflow-x: hidden; /* Prevent horizontal scroll due to animations */
 }
 
@@ -317,14 +316,12 @@ p {
 
 
 /* --- Hero Section Styles --- */
-/* src/index.css additions for typing animation */
-
 .typing-cursor {
-    display: inline-block; /* Essential for animation */
-    margin-left: 5px; /* Space between text and cursor */
-    font-weight: 300; /* Make cursor slightly thinner */
-    color: var(--color-accent); /* Match accent color */
-    animation: blinkCursor 0.7s infinite step-end; /* Blinking animation */
+    display: inline-block;
+    margin-left: 5px;
+    font-weight: 300;
+    color: var(--color-accent);
+    animation: blinkCursor 0.7s infinite step-end;
 }
 
 @keyframes blinkCursor {
@@ -332,42 +329,45 @@ p {
     50% { opacity: 0; }
 }
 
-/* Optional: Minor adjustment to hero-subtitle for better alignment with cursor */
 .hero-subtitle {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 2.5rem; /* Ensure consistent height to prevent layout shifts */
+    min-height: 2.5rem;
     font-size: 2rem;
     color: var(--color-text-secondary);
     margin-bottom: 50px;
+    /* Added text-align to ensure proper centering for smaller screens */
+    text-align: center;
 }
 
 @media (max-width: 480px) {
     .hero-subtitle {
         font-size: 1.2rem;
-        min-height: 1.5rem; /* Adjust for smaller screens */
+        min-height: 1.5rem;
     }
 }
+
 .hero-section {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(135deg, #1a202c 0%, #0d1217 100%); /* Deep dark gradient */
+    background: linear-gradient(135deg, #1a202c 0%, #0d1217 100%);
     color: var(--color-text-primary);
     padding-top: 80px; /* Account for fixed navbar */
+    padding-bottom: 40px; /* Add some padding at the bottom for smaller screens */
+    box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
 }
 
 .hero-content {
     max-width: 900px;
-    padding: 0 20px;
-    animation: fadeIn 1s ease-out forwards; /* Initial hero content fade in */
+    animation: fadeIn 1s ease-out forwards;
 }
 
 .hero-title {
-    font-size: 5.5rem; /* Larger title */
+    font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 25px;
     color: var(--color-text-primary);
@@ -377,18 +377,111 @@ p {
     color: var(--color-accent);
 }
 
-.hero-subtitle {
-    font-size: 2rem;
-    color: var(--color-text-secondary);
-    margin-bottom: 50px;
-}
-
 .hero-buttons {
     display: flex;
     justify-content: center;
     gap: 25px;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
 }
 
+/* Updated Hero Section Layout - Image on Right */
+.hero-section-wrapper {
+    display: flex;
+    flex-direction: column; /* Default to column on small screens */
+    align-items: center; /* Center items horizontally in column layout */
+    justify-content: center;
+    min-height: calc(100vh - 80px); /* Adjust for navbar height */
+    box-sizing: border-box;
+    padding: 0 25px; /* Apply container-like padding directly */
+    max-width: 1200px; /* Limit width */
+    width: 100%; /* Ensure it takes full width up to max-width */
+    margin: 0 auto; /* Center the wrapper */
+}
+
+@media (min-width: 992px) { /* For larger screens */
+    .hero-section-wrapper {
+        flex-direction: row; /* Content on left, Image on right */
+        justify-content: space-between; /* Space out content and image */
+        text-align: left; /* Align text within hero-content to the left */
+        gap: 50px; /* Space between content and image */
+    }
+
+    .hero-content {
+        text-align: left; /* Align text content to left */
+        max-width: 50%; /* Adjust max-width to share space with image */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Align content to start (left) */
+    }
+    .hero-buttons {
+        justify-content: flex-start; /* Align buttons to the left */
+    }
+}
+
+/* Styles for the image container */
+.hero-image-container {
+    width: 300px; /* Smaller default width for better responsiveness */
+    height: 380px; /* Adjust height proportionally */
+    overflow: hidden;
+    border: 5px solid var(--color-accent);
+    box-shadow: 0 0 0 8px rgba(0, 188, 212, 0.2);
+    animation: fadeIn 1s ease-out forwards;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    background-color: var(--color-card-background); /* Changed from background-color: var(--color-background-card); */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px; /* Space above image on small screens */
+    margin-bottom: 20px; /* Space below image on small screens */
+    flex-shrink: 0; /* Prevent shrinking on larger screens */
+}
+
+@media (min-width: 768px) {
+    .hero-image-container {
+        width: 350px; /* Medium screen width */
+        height: 440px;
+    }
+}
+
+@media (min-width: 992px) {
+    .hero-image-container {
+        width: 400px; /* Original larger width on desktop */
+        height: 500px;
+        margin-top: 0; /* Remove top margin on desktop */
+        margin-bottom: 0; /* Remove bottom margin on desktop */
+        margin-left: 0; /* Ensure no extra left margin */
+    }
+}
+
+
+/* Styles for the professional image */
+.premanand-maharaj-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+/* Styles for the "Radha Radha" text below the image */
+.radha-text-container {
+    font-family: 'Georgia', serif;
+    font-size: 1.2rem;
+    color: var(--color-accent);
+    margin-top: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+    min-height: 1.5rem;
+}
+
+.radha-cursor {
+    animation: blinkCursor 0.7s infinite step-end;
+    color: var(--color-accent);
+}
 
 /* --- About Section Styles --- */
 .about-section {
@@ -399,7 +492,7 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 60px; /* More space */
+    gap: 60px;
     text-align: center;
 }
 
@@ -414,10 +507,10 @@ p {
     flex-shrink: 0;
     width: 280px;
     height: 280px;
-    border-radius: 50%; /* Circular image */
+    border-radius: 50%;
     overflow: hidden;
-    border: 5px solid var(--color-accent); /* Accent border */
-    box-shadow: 0 0 0 8px rgba(0, 188, 212, 0.2); /* Soft glow */
+    border: 5px solid var(--color-accent);
+    box-shadow: 0 0 0 8px rgba(0, 188, 212, 0.2);
     animation: fadeIn 1s ease-out forwards;
 }
 
@@ -446,26 +539,25 @@ p {
 
 /* --- Skills Section Styles --- */
 .skill-card ul li {
-    display: flex; /* Use flexbox for alignment */
-    align-items: center; /* Vertically center items */
-    gap: 12px; /* Space between icon and text */
-    padding: 8px 0; /* Adjust padding */
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
     color: var(--color-text-secondary);
     font-size: 1.05rem;
-    position: relative; /* Keep relative for custom bullets if needed, though we're using icons now */
-    padding-left: 0; /* Remove old padding if you had it for custom bullets */
+    position: relative;
+    padding-left: 0;
 }
 
 .skill-card ul li::before {
-    /* If you had a custom bullet, you might want to remove or comment this out */
     content: none;
 }
 
 .skill-icon {
-    width: 24px; /* Adjust size as needed */
+    width: 24px;
     height: 24px;
-    object-fit: contain; /* Ensures the image scales properly */
-    flex-shrink: 0; /* Prevent icon from shrinking */
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 /* Optional: Hover effect for skill items */
@@ -479,7 +571,7 @@ p {
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 40px; /* More spacing */
+    gap: 40px;
 }
 
 .skill-card {
@@ -534,43 +626,42 @@ p {
 /* --- Experience Section Styles --- */
 .experience-header {
     display: flex;
-    align-items: center; /* Vertically align items */
+    align-items: center;
     justify-content: space-between;
     margin-bottom: 12px;
     flex-wrap: wrap;
-    gap: 15px; /* Adjust gap between elements */
+    gap: 15px;
 }
 
 .company-logo {
-    width: 80px; /* Adjust size as needed */
-    height: 60px; /* Make it square */
-    object-fit: contain; /* Ensure logo fits without cropping */
-    margin-right: 15px; /* Space between logo and text */
-    /*border-radius: 50%; /* Optional: make logos circular */
-    padding: 5px; /* Optional: add padding inside border */
-    background-color: #333; /* Optional: background for logos */
+    width: 80px;
+    height: 60px;
+    object-fit: contain;
+    margin-right: 15px;
+    padding: 5px;
+    background-color: #333;
 }
 
 .experience-title-company {
-    flex-grow: 1; /* Allows this block to take available space */
+    flex-grow: 1;
 }
 
 .experience-header h3 {
-    margin-bottom: 5px; /* Reduce space after title */
+    margin-bottom: 5px;
 }
 
 /* Adjust responsive styles if necessary */
 @media (max-width: 768px) {
     .experience-header {
-        flex-direction: column; /* Stack logo, title, duration */
+        flex-direction: column;
         align-items: flex-start;
     }
     .company-logo {
-        margin-bottom: 10px; /* Add space below logo */
+        margin-bottom: 10px;
         margin-right: 0;
     }
     .experience-duration {
-        margin-top: 10px; /* Space duration below company info */
+        margin-top: 10px;
     }
 }
 .experience-section {
@@ -627,7 +718,7 @@ p {
 }
 
 .experience-description {
-    list-style: none; /* Custom bullet */
+    list-style: none;
     padding: 0;
     margin-left: 0;
     color: var(--color-text-secondary);
@@ -660,7 +751,7 @@ p {
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 50px; /* More spacing */
+    gap: 50px;
 }
 
 .project-card {
@@ -682,7 +773,7 @@ p {
 
 .project-image {
     width: 100%;
-    height: 220px; /* Consistent image height */
+    height: 220px;
     object-fit: cover;
     display: block;
     transition: transform 0.3s ease;
@@ -716,13 +807,13 @@ p {
     color: var(--color-text-secondary);
     margin-bottom: 25px;
     line-height: 1.6;
-    flex-grow: 1; /* Pushes buttons to bottom */
+    flex-grow: 1;
 }
 
 .project-buttons {
     display: flex;
     gap: 15px;
-    margin-top: auto; /* Push buttons to the bottom */
+    margin-top: auto;
 }
 
 /* --- Certifications Section Styles --- */
@@ -861,7 +952,7 @@ p {
     height: 32px;
     color: var(--color-accent);
     margin-right: 20px;
-    margin-top: 2px; /* Adjust vertical alignment */
+    margin-top: 2px;
 }
 
 .contact-info-item a {
@@ -878,7 +969,7 @@ p {
 
 /* --- Footer Styles --- */
 .footer-section {
-    background-color: #0d0d0d; /* Even darker for footer */
+    background-color: #0d0d0d;
     color: var(--color-text-secondary);
     padding: 50px 0;
     text-align: center;
@@ -959,14 +1050,14 @@ p {
     }
     .btn {
         width: 100%;
-        max-width: 280px; /* Limit button width */
+        max-width: 280px;
     }
 
     .navbar-container {
         padding: 0 20px;
     }
     .nav-links {
-        display: none; /* Hide by default on small screens */
+        display: none;
         flex-direction: column;
         position: fixed;
         top: 0;
@@ -978,19 +1069,19 @@ p {
         align-items: center;
         justify-content: center;
         gap: 40px;
-        transform: translateX(100%); /* Start off-screen */
+        transform: translateX(100%);
         transition: transform 0.4s ease-out;
     }
     .nav-links.open {
-        transform: translateX(0); /* Slide in */
-        display: flex; /* Show when open */
+        transform: translateX(0);
+        display: flex;
     }
     .nav-links li a {
         font-size: 1.8rem;
         padding: 10px 0;
     }
     .menu-toggle {
-        display: flex; /* Show hamburger menu */
+        display: flex;
     }
 
     .about-content {
@@ -1002,7 +1093,7 @@ p {
     }
 
     .skills-grid, .projects-grid, .certifications-grid {
-        grid-template-columns: 1fr; /* Stack columns */
+        grid-template-columns: 1fr;
     }
 
     .project-image {
