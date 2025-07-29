@@ -317,6 +317,38 @@ p {
 
 
 /* --- Hero Section Styles --- */
+/* src/index.css additions for typing animation */
+
+.typing-cursor {
+    display: inline-block; /* Essential for animation */
+    margin-left: 5px; /* Space between text and cursor */
+    font-weight: 300; /* Make cursor slightly thinner */
+    color: var(--color-accent); /* Match accent color */
+    animation: blinkCursor 0.7s infinite step-end; /* Blinking animation */
+}
+
+@keyframes blinkCursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Optional: Minor adjustment to hero-subtitle for better alignment with cursor */
+.hero-subtitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 2.5rem; /* Ensure consistent height to prevent layout shifts */
+    font-size: 2rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 50px;
+}
+
+@media (max-width: 480px) {
+    .hero-subtitle {
+        font-size: 1.2rem;
+        min-height: 1.5rem; /* Adjust for smaller screens */
+    }
+}
 .hero-section {
     min-height: 100vh;
     display: flex;
@@ -413,6 +445,33 @@ p {
 
 
 /* --- Skills Section Styles --- */
+.skill-card ul li {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Vertically center items */
+    gap: 12px; /* Space between icon and text */
+    padding: 8px 0; /* Adjust padding */
+    color: var(--color-text-secondary);
+    font-size: 1.05rem;
+    position: relative; /* Keep relative for custom bullets if needed, though we're using icons now */
+    padding-left: 0; /* Remove old padding if you had it for custom bullets */
+}
+
+.skill-card ul li::before {
+    /* If you had a custom bullet, you might want to remove or comment this out */
+    content: none;
+}
+
+.skill-icon {
+    width: 24px; /* Adjust size as needed */
+    height: 24px;
+    object-fit: contain; /* Ensures the image scales properly */
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+/* Optional: Hover effect for skill items */
+.skill-item:hover {
+    color: var(--color-text-primary);
+}
 .skills-section {
     background-color: var(--color-background-dark);
 }
@@ -473,6 +532,47 @@ p {
 
 
 /* --- Experience Section Styles --- */
+.experience-header {
+    display: flex;
+    align-items: center; /* Vertically align items */
+    justify-content: space-between;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 15px; /* Adjust gap between elements */
+}
+
+.company-logo {
+    width: 80px; /* Adjust size as needed */
+    height: 60px; /* Make it square */
+    object-fit: contain; /* Ensure logo fits without cropping */
+    margin-right: 15px; /* Space between logo and text */
+    /*border-radius: 50%; /* Optional: make logos circular */
+    padding: 5px; /* Optional: add padding inside border */
+    background-color: #333; /* Optional: background for logos */
+}
+
+.experience-title-company {
+    flex-grow: 1; /* Allows this block to take available space */
+}
+
+.experience-header h3 {
+    margin-bottom: 5px; /* Reduce space after title */
+}
+
+/* Adjust responsive styles if necessary */
+@media (max-width: 768px) {
+    .experience-header {
+        flex-direction: column; /* Stack logo, title, duration */
+        align-items: flex-start;
+    }
+    .company-logo {
+        margin-bottom: 10px; /* Add space below logo */
+        margin-right: 0;
+    }
+    .experience-duration {
+        margin-top: 10px; /* Space duration below company info */
+    }
+}
 .experience-section {
     background-color: var(--color-background-light);
 }

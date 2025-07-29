@@ -6,17 +6,17 @@ function Projects() {
       title: 'VermaBytes - Learning Platform',
       techStack: 'React + Custom CSS',
       description: 'Created VermaBytes, a modern learning platform offering structured courses and engaging content. Utilized React.js and CSS to build a scalable, responsive interface with component-based architecture, dynamic routing, and smooth user interactions, emphasizing performance and accessibility.',
-      image: 'https://via.placeholder.com/400x220/00bcd4/FFFFFF?text=VermaBytes', // Replace with your actual project image
-      liveLink: '#', // Replace with actual live link
-      githubLink: '#', // Replace with actual GitHub link
+      image: '/images/VermaBytesImg.png', // Replace with your actual project image
+      liveLink: 'https://vermabytes.netlify.app/', // Replace with actual live link
+      githubLink: 'https://github.com/VermaBytes/Todo-App.git', // Replace with actual GitHub link
     },
     {
       title: 'Expense Tracker',
       techStack: 'MERN Stack',
       description: 'The Expense Tracker Project is a Web Application Developed Using React Js, Node Js, Express Js, MongoDB. Its Main Purpose is to Assist Users in Keeping Track of Their Expenses. This project involves creating a user interface that enables users to add, edit, and delete expenses.',
-      image: 'https://via.placeholder.com/400x220/00bcd4/FFFFFF?text=Expense+Tracker', // Replace with your actual project image
-      liveLink: '#', // Replace with actual live link
-      githubLink: '#', // Replace with actual GitHub link
+      image: '/images/ExpenseImg.png', // Replace with your actual project image
+      liveLink: 'https://hisabook.netlify.app/', // Replace with actual live link
+      githubLink: 'https://github.com/VermaBytes/ExpenseTrackers.git', // Replace with actual GitHub link
     },
     // Add more projects here
   ];

@@ -2,10 +2,25 @@ import React from 'react';
 
 function Skills() {
   const skills = {
-    Programming: ['JavaScript', 'Basic Dot net'],
-    Frontend: ['React Js', 'Basic Angular', 'HTML', 'CSS', 'Bootstrap'],
-    Backend: ['Node Js', 'Express Js'],
-    Databases: ['MongoDB', 'MySQL'],
+    Programming: [
+      { name: 'JavaScript', icon: '/images/Javascript.jpg' }, // Example icon path
+      { name: 'Basic Dot net', icon: '/images/dotnet.png' }, // Example icon path
+    ],
+    Frontend: [
+      { name: 'React Js', icon: '/images/reactjs.jpg' },
+      { name: 'Basic Angular', icon: '/images/angular.jpg' },
+      { name: 'HTML5', icon: '/images/html.jpg' },
+      { name: 'CSS3', icon: '/images/css3.jpg' },
+      { name: 'Bootstrap', icon: '/images/bootstrap.jpg' },
+    ],
+    Backend: [
+      { name: 'Node Js', icon: '/images/nodejs.jpg' },
+      { name: 'Express Js', icon: '/images/Expressjs.png' },
+    ],
+    Databases: [
+      { name: 'MongoDB', icon: '/images/mongodb.png' },
+      { name: 'MySQL', icon: '/images/mysql.jpg' },
+    ],
   };
 
   return (
@@ -20,7 +35,16 @@ function Skills() {
             <h3>{category}</h3>
             <ul>
               {items.map((item, i) => (
-                <li key={i}>{item}</li>
+                <li key={i} className="skill-item"> {/* Add a class for styling */}
+                  {item.icon && (
+                    <img
+                      src={item.icon}
+                      alt={item.name}
+                      className="skill-icon" // Class for the icon image
+                    />
+                  )}
+                  {item.name}
+                </li>
               ))}
             </ul>
           </div>

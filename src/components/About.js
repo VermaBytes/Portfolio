@@ -7,7 +7,7 @@ function About() {
       <div className="about-content">
         <div className="about-image-container fade-in delay-300">
           <img
-            src="https://via.placeholder.com/280/00bcd4/FFFFFF?text=Shobhit" // Replace with your profile picture path
+            src="/images/Shobhitphoto.jpg" // <-- UPDATED PATH HERE
             alt="Shobhit Verma"
             className="about-image"
           />

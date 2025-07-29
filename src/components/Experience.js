@@ -5,6 +5,7 @@ function Experience() {
     {
       title: 'Junior Frontend Developer',
       company: 'Aquatrax IT Solutions',
+      logoUrl: '/images/aquatrax.png', 
       duration: 'Sep 2024 - Feb 2025',
       location: 'Remote',
       description: [
@@ -17,6 +18,7 @@ function Experience() {
     {
       title: 'Full Stack Developer Intern',
       company: 'NetCoreInfo Business Group',
+      logoUrl: '/images/netcoreNew.png',
       duration: 'Oct 2023 - Jan 2024',
       location: 'Noida',
       description: [
@@ -29,6 +31,7 @@ function Experience() {
     {
       title: 'Web Developer Intern',
       company: 'Aikam India Pvt Ltd',
+      logoUrl: '/images/Akam.jpg', // Replace with Aikam India logo path
       duration: 'Feb 2022 - May 2022',
       location: 'Lucknow',
       description: [
@@ -49,14 +52,23 @@ function Experience() {
             className={`experience-card slide-in-up delay-${200 + index * 100}`}
           >
             <div className="experience-header">
-              <h3>{exp.title}</h3>
+              {exp.logoUrl && ( // Conditionally render logo if URL exists
+                <img
+                  src={exp.logoUrl}
+                  alt={`${exp.company} Logo`}
+                  className="company-logo" // Add a class for styling the logo
+                />
+              )}
+              <div className="experience-title-company"> {/* New wrapper for title and company */}
+                <h3>{exp.title}</h3>
+                <p className="experience-company">
+                  {exp.company} - {exp.location}
+                </p>
+              </div>
               <span className="experience-duration">
                 {exp.duration}
               </span>
             </div>
-            <p className="experience-company">
-              {exp.company} - {exp.location}
-            </p>
             <ul className="experience-description">
               {exp.description.map((item, i) => (
                 <li key={i}>{item}</li>

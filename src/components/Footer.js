@@ -9,7 +9,7 @@ function Footer() {
         </p>
         <div className="social-links">
           <a
-            href="https://github.com/your-github-profile" // Replace with your GitHub link
+            href="https://github.com/VermaBytes" // Replace with your GitHub link
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -19,7 +19,7 @@ function Footer() {
             </svg>
           </a>
           <a
-            href="https://www.linkedin.com/in/shobhit-verma-b33a7820a/"
+            href="https://www.linkedin.com/in/shobhit-verma-549744231?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
             target="_blank"
             rel="noopener noreferrer"
           >
